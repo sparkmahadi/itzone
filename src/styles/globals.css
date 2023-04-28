@@ -17,11 +17,59 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+}
+
+.bg-secondary {
+  background: linear-gradient(90deg, rgba(2, 2, 77, 0.671) 0%, rgba(79, 132, 161, 1) 50%, rgba(3, 42, 59, 1) 100%);
+}
+
+.bg-secondary-reverse {
+  background: linear-gradient(90deg, rgba(3, 42, 59, 1) 0%, rgba(79, 132, 161, 1) 50%, rgba(2, 2, 77, 0.671) 100%);
+}
+
+.dark-theme .bg-card {
+  background-color: rgb(68, 100, 160);
+  border-radius: 10px;
+}
+
+.dark-theme .faq-div,
+.dark-theme .blog-div {
+  color: white;
+}
+
+.light-theme .faq-div,
+.light-theme .blog-div {
+  background-color: white;
+}
+
+.dark-theme .moon-theme-bg {
+  background-color: white;
+  color: rgba(24, 23, 23, 0.849);
+  padding: 2px;
+  border-radius: 7px;
+}
+
+.dark-theme .home-div h5,
+.dark-theme .home-div p {
+  color: white;
+}
+
+.dark-theme .nav-mobile-menu {
+  background-color: black;
+  color: white;
+}
+
+.light-theme .nav-mobile-menu {
+  color: black;
+}
+
+.min-h-custom {
+  min-height: 70vh;
 }
