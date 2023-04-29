@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import cartSlice from "../features/cart/cartSlice";
 import filterSlice from "../features/filter/filterSlice";
 import productsSlice from "../features/products/productsSlice";
+import userSlice from "../features/user/userSlice";
 import { composeWithDevTools } from "@redux-devtools/extension";
 
 const store = configureStore({
@@ -9,6 +10,7 @@ const store = configureStore({
         cart: cartSlice,
         filter: filterSlice,
         products: productsSlice,
+        user: userSlice,
     },
     devTools: composeWithDevTools(),
 });

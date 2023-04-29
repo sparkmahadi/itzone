@@ -27,7 +27,7 @@ export const removeProduct = createAsyncThunk("products/removeProduct", async (i
     return products;
 })
 
-export const modifyProduct = createAsyncThunk("products/modifyProduct", async(productInfo) =>{
+export const modifyProduct = createAsyncThunk("products/modifyProduct", async (productInfo) => {
     const products = await updateProduct(productInfo);
     return products;
 })

@@ -9,35 +9,33 @@ const Navbar = () => {
       <ul className='h-full  mx-auto flex justify-between items-center gap-3 font-semibold text-indigo-900'>
         <h1>IT Zone</h1>
 
-        <li className='flex bg-white mx-auto h-8 w-full max-w-lg  rounded-full pr-3'>
-          <input
-            className='h-8 rounded-full w-full text-sm border-0 focus:ring-0 outline-none'
-            type='text'
-            name='search'
-            id='search'
-          />
-          <button>
-            <BiSearchAlt />
-          </button>
-        </li>
-        <li>
-          <Link href='/'>Home</Link>
-        </li>
-        <li>
-          <Link href='/products'>Products</Link>
-        </li>
-        <li>
-          <Link href='/about'>About</Link>
-        </li>
-        <li>
-          <Link href='/dashboard'>Dashboard</Link>
-        </li>
-
-        <Link href='/cart'>
-          <li title='cart' className='bg-indigo-500 p-2 rounded-full'>
-            <BsFillCartFill className='text-white ' />
+        <ul className=" flex justify-between items-center gap-10">
+          <li>
+            <Link href='/'>Home</Link>
           </li>
-        </Link>
+          <li>
+            <Link href='/products'>Products</Link>
+          </li>
+          <li>
+            <Link href='/about'>About</Link>
+          </li>
+          <li>
+            <Link href='/dashboard'>Dashboard</Link>
+          </li>
+
+          <li>
+            <Link href='/cart'>
+              My Cart
+            </Link>
+          </li>
+
+          <li>
+            <Link href='/login'>Login</Link>
+          </li>
+          <li>
+            <Link href='/register'>Register</Link>
+          </li>
+        </ul>
       </ul>
     </nav>
   );

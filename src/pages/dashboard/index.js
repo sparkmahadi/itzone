@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Sidebar from './components/Sidebar';
 import ProductList from './components/ProductList';
 import CustomersList from '../customers-list';
+import AddProduct from './components/AddProduct';
 
 const Dashboard = () => {
     const router = useRouter();
@@ -19,6 +20,9 @@ const Dashboard = () => {
                 }
                 {
                     activePage === 'customers-list' && <CustomersList></CustomersList>
+                }
+                {
+                    activePage === 'add-product' && <AddProduct></AddProduct>
                 }
             </div>
         </div>

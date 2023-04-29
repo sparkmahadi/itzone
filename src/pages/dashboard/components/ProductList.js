@@ -1,11 +1,34 @@
-
+import { getProducts, removeProduct, toggleDeleteSuccess } from "@/redux/features/products/productsSlice";
+import { useEffect } from "react";
+import { toast } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductList = () => {
+
+  const dispatch = useDispatch();
+  const { products, isLoading, deleteSuccess, isError, error } = useSelector(state => state.products);
+
+  const deleteProductConfirmation = (_id) => {
+    const confirm = window.confirm("Are you sure to delete the product?");
+    if (confirm) {
+      dispatch(removeProduct(_id));
+    }
+  }
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!isLoading && deleteSuccess) {
+      toast.success("Product is Deleted Successfully");
+      dispatch(toggleDeleteSuccess());
+    }
+  }, [isLoading, deleteSuccess])
 
   if (isLoading) {
     return <p>Loading...</p>
   }
-
   return (
     <div className='flex flex-col justify-center items-center h-full w-full '>
       <div className='w-full max-w-7xl mx-auto rounded-lg  bg-white shadow-lg border border-gray-200'>
@@ -64,7 +87,7 @@ const ProductList = () => {
                   </td>
                   <td className='p-2'>
                     <div className='flex justify-center items-center'>
-                      <button onClick={() => dispatch(removeProduct(_id))}>
+                      <button onClick={() => deleteProductConfirmation(_id)}>
                         <svg
                           className='w-8 h-8 hover:text-blue-600 rounded-full hover:bg-gray-100 p-1'
                           fill='none'

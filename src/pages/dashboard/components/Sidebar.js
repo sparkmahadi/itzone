@@ -15,7 +15,7 @@ const Sidebar = () => {
           <Link href='/dashboard?activePage=order-list'> Order List </Link>
         </li>
         <li>
-          <Link href='/dashboard?activePage=product-list'> Product List </Link>
+          <Link href='/dashboard?activePage=products-list'> Product List </Link>
         </li>
         <li>
           <Link href='/dashboard?activePage=add-product'> Add Product </Link>

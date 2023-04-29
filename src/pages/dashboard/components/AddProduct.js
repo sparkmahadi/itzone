@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { addProduct, togglePostSuccess } from "../../features/products/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
+import { addProduct, togglePostSuccess } from "@/redux/features/products/productsSlice";
 
 const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -55,13 +55,13 @@ const AddProduct = () => {
           <label className='mb-2' htmlFor='model'>
             Model
           </label>
-          <input type='text' id='model' {...register("model")} />
+          <input className="border rounded-md" type='text' id='model' {...register("model")} />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='image'>
             Image
           </label>
-          <input type='text' name='image' id='image' {...register("image")} />
+          <input className="border rounded-md" type='text' name='image' id='image' {...register("image")} />
         </div>
 
         <div className='flex flex-col w-full max-w-xs'>
@@ -77,14 +77,14 @@ const AddProduct = () => {
           <label className='mb-2' htmlFor='price'>
             Image
           </label>
-          <input type='text' name='price' id='price' {...register("price")} />
+          <input className="border rounded-md" type='text' name='price' id='price' {...register("price")} />
         </div>
 
         <div className='flex flex-col w-full max-w-xs'>
           <h1 className='mb-3'>Availability</h1>
           <div className='flex gap-3'>
             <div>
-              <input
+              <input className="border rounded-md"
                 type='radio'
                 id='available'
                 value={true}
@@ -95,7 +95,7 @@ const AddProduct = () => {
               </label>
             </div>
             <div>
-              <input
+              <input className="border rounded-md"
                 type='radio'
                 id='stockOut'
                 name='status'
@@ -113,7 +113,7 @@ const AddProduct = () => {
           <label className='mb-2' htmlFor='keyFeature1'>
             Key Feature 1
           </label>
-          <input
+          <input className="border rounded-md"
             type='text'
             name='keyFeature1'
             id='keyFeature1'
@@ -124,7 +124,7 @@ const AddProduct = () => {
           <label className='mb-2' htmlFor='keyFeature2'>
             Key Feature 2
           </label>
-          <input
+          <input className="border rounded-md"
             type='text'
             name='keyFeature2'
             id='keyFeature2'
@@ -135,7 +135,7 @@ const AddProduct = () => {
           <label className='mb-2' htmlFor='keyFeature3'>
             Key Feature 3
           </label>
-          <input
+          <input className="border rounded-md"
             type='text'
             name='keyFeature3'
             id='keyFeature3'
@@ -146,7 +146,7 @@ const AddProduct = () => {
           <label className='mb-2' htmlFor='keyFeature4'>
             Key Feature 4
           </label>
-          <input
+          <input className="border rounded-md"
             type='text'
             name='keyFeature4'
             id='keyFeature4'
