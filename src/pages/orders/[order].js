@@ -11,12 +11,16 @@ const Order = () => {
     console.log(router.query);
     return (
         <div className='mb-5'>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl gap-14 mx-auto my-10'>
-                {orders.find(order => order._id === orderId).products
-                    .map((product) => (
-                        <ProductCard key={product.model} product={product} />
-                    ))}
-            </div>
+            {
+                orders.length &&
+
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl gap-14 mx-auto my-10'>
+                    {orders?.find(order => order._id === orderId).products
+                        .map((product) => (
+                            <ProductCard key={product.model} product={product} />
+                        ))}
+                </div>
+            }
 
             <div className='flex justify-center'>
                 {
