@@ -11,7 +11,7 @@ const Login = () => {
     const dispatch = useDispatch();
     const router = useRouter();
 
-    const { user, loginSuccess, userLoading, userError, error, invalidMobile } = useSelector((state) => state.user)
+    const { userProfile, loginSuccess, userLoading, userError, error, invalidMobile } = useSelector((state) => state.user)
 
     const submit = (data) => {
         const regex = /^1\d{9}$/;
@@ -27,12 +27,12 @@ const Login = () => {
     };
 
     useEffect(() => {
-        if (user && loginSuccess) {
-            localStorage.setItem("userITZone", JSON.stringify(user));
+        if (userProfile && loginSuccess) {
+            localStorage.setItem("userITZone", JSON.stringify(userProfile));
             toast.success("Logged In Successfully", { id: 'userLogin' });
             router.push("/");
         }
-    }, [user, loginSuccess]);
+    }, [userProfile, loginSuccess]);
 
     return (
         <div className='flex justify-center items-center h-full my-5'>

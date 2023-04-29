@@ -12,13 +12,13 @@ const Dashboard = () => {
     const router = useRouter();
     const activePage = router.query.activePage;
 
-    const { user, userLoading, error } = useSelector(state => state.user);
+    const { userProfile, userLoading, error } = useSelector(state => state.user);
 
     useEffect(() => {
-        if (!user) {
+        if (!userProfile) {
             router.push("/login")
         }
-    }, [user])
+    }, [userProfile])
 
     if (userLoading) {
         return <h2>Loading...</h2>

@@ -3,7 +3,7 @@ import { fetchUser, postUser } from "./userAPI";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 const initialState = {
-    user: null,
+    userProfile: null,
     userLoading: false,
     userError: false,
     registerSuccess: false,
@@ -27,7 +27,7 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setUserProfile: (state, action) => {
-            state.user = action.payload;
+            state.userProfile = action.payload;
             if (!action.payload) {
                 state.loginSuccess = false;
                 state.userLoading = false;
@@ -51,7 +51,7 @@ const userSlice = createSlice({
                 state.invalidMobile = "";
             })
             .addCase(registerUser.fulfilled, (state, action) => {
-                state.user = action.payload;
+                state.userProfile = action.payload;
                 state.userLoading = false;
                 state.registerSuccess = true;
                 state.invalidMobile = "";
@@ -71,12 +71,12 @@ const userSlice = createSlice({
             })
             .addCase(getUser.fulfilled, (state, action) => {
                 state.userLoading = false;
-                state.user = action.payload;
+                state.userProfile = action.payload;
                 state.loginSuccess = true;
                 state.invalidMobile = "";
             })
             .addCase(getUser.rejected, (state, action) => {
-                state.user = null;
+                state.userProfile = null;
                 state.userError = true;
                 state.error = action.error.message;
                 state.userLoading = false;

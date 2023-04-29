@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const Cart = () => {
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cart.cart);
-    const { user } = useSelector(state => state.user);
+    const { userProfile } = useSelector(state => state.user);
 
     const handlePlaceOrder = (cart) => {
         const orderData = {

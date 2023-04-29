@@ -1,13 +1,10 @@
-import { BsFillCartFill } from "react-icons/bs";
-import { IoIosListBox } from "react-icons/io";
-import { BiSearchAlt } from "react-icons/bi";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserProfile } from "@/redux/features/user/userSlice";
 
 const Navbar = () => {
-  const { user } = useSelector((state) => state.user)
+  const { userProfile } = useSelector((state) => state.user)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,7 +32,7 @@ const Navbar = () => {
             <Link href='/products'>Products</Link>
           </li>
           {
-            user &&
+            userProfile &&
             <li>
               <Link href='/dashboard'>Dashboard</Link>
             </li>
@@ -48,7 +45,7 @@ const Navbar = () => {
           </li>
 
           {
-            user &&
+            userProfile &&
             <li>
               <Link href='/orders'>
                 Orders
@@ -57,7 +54,7 @@ const Navbar = () => {
           }
 
           {
-            !user ?
+            !userProfile ?
               <li><Link href='/login'>Log In</Link></li>
               :
               <li className="cursor-pointer" onClick={handleLogOut}>Log Out</li>

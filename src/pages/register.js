@@ -9,7 +9,7 @@ const Register = () => {
     const { register, handleSubmit, reset } = useForm();
     const dispatch = useDispatch();
     const router = useRouter();
-    const { user, registerSuccess, userLoading, userError, error, invalidMobile } = useSelector((state) => state.user)
+    const { userProfile, registerSuccess, userLoading, userError, error, invalidMobile } = useSelector((state) => state.user)
 
     const submit = (data) => {
 
@@ -32,6 +32,7 @@ const Register = () => {
             toast.success("Registered Successfully", { id: "registration" });
             dispatch(toggleRegisterSuccess());
             reset();
+            router.push("/");
         };
 
         if (userLoading && !error) {
@@ -51,10 +52,10 @@ const Register = () => {
     }, [registerSuccess, userLoading, userError, error]);
 
     useEffect(() => {
-        if (user) {
+        if (userProfile && registerSuccess) {
             router.push("/");
         }
-    }, [user])
+    }, [userProfile, registerSuccess])
 
     return (
         <div className='flex justify-center items-center h-full my-5'>

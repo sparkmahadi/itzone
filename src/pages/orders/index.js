@@ -6,14 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 const Orders = () => {
     const dispatch = useDispatch();
     const { orders, isLoading, isError, error } = useSelector(state => state.cart);
-    const { user } = useSelector(state => state.user);
+    const { userProfile } = useSelector(state => state.user);
 
     useEffect(() => {
-        if (user) {
-            dispatch(getOrders(user.mobile));
-            console.log(user.mobile);
+        if (userProfile) {
+            dispatch(getOrders(userProfile.mobile));
+            console.log(userProfile.mobile);
         }
-    }, [user]);
+    }, [userProfile]);
 
 
     return (
@@ -27,8 +27,8 @@ const Orders = () => {
                     {
                         orders.length ?
 
-                            <table className='table-auto w-full'>
-                                <thead className='text-xs font-semibold uppercase text-gray-400 bg-gray-50'>
+                            <table className='table-auto mx-auto text-center'>
+                                <thead className='text-xs lg:text-base font-semibold uppercase text-gray-400 bg-gray-50'>
                                     <tr>
                                         <th className='p-2'>
                                             <div className='font-semibold text-left'>Serial</div>
@@ -42,7 +42,7 @@ const Orders = () => {
                                     </tr>
                                 </thead>
 
-                                <tbody className='text-sm divide-y divide-gray-100'>
+                                <tbody className='text-sm divide-y divide-gray-100 '>
                                     {orders.map((order, i) => (
                                         <tr key={order._id}>
                                             <td className='p-2'>
@@ -54,7 +54,7 @@ const Orders = () => {
                                             <td className='p-2'>
                                                 <div className='font-medium text-gray-800'>
                                                     <Link href={`/orders/${order._id}`}>
-                                                        <button className="px-4 py-2 bg-indigo-500 rounded-md font-semibold text-white text-lg disabled:bg-gray-500">View Products</button>
+                                                        <button className="px-2 py-1 bg-indigo-500 rounded-md font-semibold text-white text-xs disabled:bg-gray-500">View Products</button>
                                                     </Link>
                                                 </div>
                                             </td>
