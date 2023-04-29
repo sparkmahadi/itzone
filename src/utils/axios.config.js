@@ -10,7 +10,7 @@ switch (process.env.REACT_APP_ENVIRONMENT) {
         URL = "https://itzone-server.vercel.app";
         break;
     default:
-        URL = "http://localhost:5000/";
+        URL = "https://itzone-server.vercel.app";
 }
 
 const instance = axios.create({
