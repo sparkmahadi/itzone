@@ -6,9 +6,11 @@ This project is about a basic and standardized ecommerce app for different users
 
 ### Core Features:
 - It is a full stack project on electronic gadget selling and buying.
-- On the Navbar, Normally, there are three routes which redirects to different components. But after logging in or registration, extra routes for dashboard is opened.
 - Dedicated dashboard for different users.
 - Redux is used for strong state management.
+- Secured authentication is implemented without any third party library.
+- Dedicated tools for admins in dashboard.
+
 ### Technology used:
 - Next JS
 - TailwindCSS
