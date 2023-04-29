@@ -1,9 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { toast } from "react-hot-toast";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { fetchOrders, postOrder } from "./cartAPI";
 
 const initialState = {
     cart: [],
+    orders: [],
+    isLoading: false,
+    isError: false,
+    error: ""
 };
+
+export const getOrders = createAsyncThunk("orders/getOrders", async (mobile) => {
+    const order = fetchOrders(mobile);
+    return order;
+});
+
+export const placeOrder = createAsyncThunk("orders/placeOrder", async (data) => {
+    const order = postOrder(data);
+    return order;
+});
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -21,7 +35,6 @@ const cartSlice = createSlice({
                     .filter(product => product._id !== selectedProduct._id)
                     .push(selectedProduct)
             }
-            toast.success("Product is added to your cart successfully!")
         },
 
         removeFromCart: (state, action) => {
@@ -34,7 +47,42 @@ const cartSlice = createSlice({
             } else {
                 state.cart = state.cart.filter(product => product._id !== action.payload._id)
             }
-        }
+        },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getOrders.pending, (state, action) => {
+                state.isLoading = true;
+                state.isError = false;
+            })
+            .addCase(getOrders.fulfilled, (state, action) => {
+                state.orders = action.payload;
+                state.isLoading = false;
+            })
+            .addCase(getOrders.rejected, (state, action) => {
+                state.orders = [];
+                state.isLoading = false;
+                state.isError = true;
+                state.error = action.error.message;
+            })
+
+
+            .addCase(placeOrder.pending, (state, action) => {
+                state.isLoading = true;
+                state.isError = false;
+                state.error = "";
+            })
+            .addCase(placeOrder.fulfilled, (state, action) => {
+                state.orders.push(action.payload);
+                state.isLoading = false;
+                state.error = "";
+            })
+            .addCase(placeOrder.rejected, (state, action) => {
+                state.orders = [];
+                state.isLoading = false;
+                state.isError = true;
+                state.error = action.error.message;
+            })
     }
 })
 

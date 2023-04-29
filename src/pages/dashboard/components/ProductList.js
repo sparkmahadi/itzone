@@ -30,7 +30,7 @@ const ProductList = () => {
     return <p>Loading...</p>
   }
   return (
-    <div className='flex flex-col justify-center items-center h-full w-full '>
+    <div className='flex flex-col justify-center items-center w-full '>
       <div className='w-full max-w-7xl mx-auto rounded-lg  bg-white shadow-lg border border-gray-200'>
         <header className='px-5 py-4 border-b border-gray-100'>
           <div className='font-semibold text-gray-800'>Products</div>
@@ -45,17 +45,14 @@ const ProductList = () => {
                   <div className='font-semibold text-left'>Product Name</div>
                 </th>
                 <th className='p-2'>
-                  <div className='font-semibold text-left'>Brand</div>
-                </th>
-                <th className='p-2'>
                   <div className='font-semibold text-left'>In Stock</div>
                 </th>
                 <th className='p-2'>
                   <div className='font-semibold text-left'>Price</div>
                 </th>
-                <th className='p-2'>
+                {/* <th className='p-2'>
                   <div className='font-semibold text-center'>Action</div>
-                </th>
+                </th> */}
               </tr>
             </thead>
 
@@ -67,9 +64,6 @@ const ProductList = () => {
                   </td>
                   <td className='p-2'>
                     <div className='font-medium text-gray-800'>{model}</div>
-                  </td>
-                  <td className='p-2'>
-                    <div className='text-left capitalize'>{brand}</div>
                   </td>
                   <td className='p-2'>
                     <div className='text-left'>
@@ -85,7 +79,7 @@ const ProductList = () => {
                       {price}
                     </div>
                   </td>
-                  <td className='p-2'>
+                  {/* <td className='p-2'>
                     <div className='flex justify-center items-center'>
                       <button onClick={() => deleteProductConfirmation(_id)}>
                         <svg
@@ -103,13 +97,13 @@ const ProductList = () => {
                           ></path>
                         </svg>
                       </button>
-                      {/* <Link to={`update-product/${_id}`}>
+                      <Link to={`update-product/${_id}`}>
                         <button className="btn">
                           Edit
                         </button>
-                      </Link> */}
+                      </Link>
                     </div>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>

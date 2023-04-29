@@ -3,14 +3,26 @@ import { useDispatch } from "react-redux";
 import { MdDeleteForever } from "react-icons/md";
 import { useRouter } from "next/router";
 import { addToCart, removeFromCart } from "@/redux/features/cart/cartSlice";
+import { toast } from "react-hot-toast";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const pathname = router.pathname;
+  console.log(pathname);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    toast.success("Product is added to your cart successfully!", { id: 'addToCart' })
+  }
   return (
     <div className='shadow-lg relative rounded-3xl border p-3 flex flex-col text-indigo-900'>
       {pathname.includes("cart") && (
+        <div className='rounded-full grid place-items-center absolute top-2 right-2 bg-indigo-500 text-white h-8 w-8 font-bold '>
+          <p> {product.quantity} </p>
+        </div>
+      )}
+      {pathname.includes("orders") && (
         <div className='rounded-full grid place-items-center absolute top-2 right-2 bg-indigo-500 text-white h-8 w-8 font-bold '>
           <p> {product.quantity} </p>
         </div>
@@ -34,7 +46,7 @@ const ProductCard = ({ product }) => {
       <div className='flex gap-2 mt-5'>
         {!pathname.includes("cart") && (
           <button
-            onClick={() => dispatch(addToCart(product))}
+            onClick={() => handleAddToCart(product)}
             className='bg-indigo-500 rounded-full py-1 px-2 flex-1 text-white text-bold'
           >
             Add to cart

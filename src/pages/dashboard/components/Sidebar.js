@@ -8,12 +8,9 @@ const Sidebar = () => {
         <li>
           <Link href='/dashboard'>Overview</Link>
         </li>
-        <li>
+        {/* <li>
           <Link href='/dashboard?activePage=customers-list'> Customer's List </Link>
-        </li>
-        <li>
-          <Link href='/dashboard?activePage=order-list'> Order List </Link>
-        </li>
+        </li> */}
         <li>
           <Link href='/dashboard?activePage=products-list'> Product List </Link>
         </li>
